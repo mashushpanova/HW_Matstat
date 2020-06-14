@@ -1,0 +1,424 @@
+\documentclass[a4paper]{article} % this is used for comments
+\usepackage[utf8]{inputenc}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+\usepackage[english,russian]{babel}
+
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Шрифты
+\usepackage{euscript}	 % Шрифт Евклид
+\usepackage{mathrsfs} % Красивый матшрифт
+
+\usepackage{physics}
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\DeclareMathOperator{\Lin}{\mathrm{Lin}}
+\DeclareMathOperator{\Linp}{\Lin^{\perp}}
+\DeclareMathOperator*\plim{plim}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\sgn}{sign}
+\DeclareMathOperator{\sign}{sign}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\amn}{arg\,min}
+\DeclareMathOperator*{\amx}{arg\,max}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Corr}{Corr}
+\DeclareMathOperator{\pCorr}{pCorr}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cBinom}{\mathcal{Binom}}
+\newcommand{\cBin}{\cBinom}
+\newcommand{\cPois}{\mathcal{Pois}}
+\newcommand{\cBeta}{\mathcal{Beta}}
+\newcommand{\cGamma}{\mathcal{Gamma}}
+
+\newcommand \R{\mathbb{R}}
+\newcommand \N{\mathbb{N}}
+\newcommand \Z{\mathbb{Z}}
+
+\newcommand{\dx}[1]{\,\mathrm{d}#1} % для интеграла: маленький отступ и прямая d
+\newcommand{\ind}[1]{\mathbbm{1}_{\{#1\}}} % Индикатор события
+%\renewcommand{\to}{\rightarrow}
+\newcommand{\eqdef}{\mathrel{\stackrel{\rm def}=}}
+\newcommand{\iid}{\mathrel{\stackrel{\rm i.\,i.\,d.}\sim}}
+\newcommand{\const}{\mathrm{const}}
+
+% вместо горизонтальной делаем косую черточку в нестрогих неравенствах
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+
+
+
+
+\title{Промежуточный экзамен 2017-2018}
+\author{БЭК182, Шушпанова Мария}
+\date{Июнь 2020}
+
+
+
+
+
+
+\begin{document}
+
+\maketitle
+
+\textbf{Промежуточный экзамен 2017-2018}
+
+\textbf{Ответы:}
+AEСBA ?BCEB BBCCA BBCCC ABCBA EA?AC
+
+\vspace{\baselineskip}
+\textbf{Решение:}
+
+\begin{enumerate}
+
+    \item
+
+    $X^2$ - неотрицательная случайная величина. 
+    
+    Тогда согласно неравенству Маркова:
+
+    \[\P(X^2 \geq 100) \leq \frac{\E(X^2)}{100} \]
+    
+    Находим необходимое математическое ожидание и вычисляем ответ:
+     \[ (\E(X^2) = \Var(X) + \E(X))^2 = 10\]
+     \[\P(X^2 \geq 100) \leq \frac{10}{100} = 0.1 \]
+    
+    Следовательно, $\P(X^2 \geq 100)$ принадлежит промежутку $[0, 0.1]$
+
+    Ответ: A
+
+    \item
+
+    По определению распределения Пуассона с параметром $\lambda$:
+    \[ \E(\xi) =\lambda \]
+    \[ \Var\xi) =\lambda \]
+    
+    Тогда по свойству дисперсии:
+
+    \[ \E(\xi^2) = \Var(\xi) + (\E(\xi))^2 = \lambda + \lambda^2 = \lambda \cdot (1 + \lambda)\]
+
+    Ответ: E
+
+    \item
+    
+    Вычислим неизвестные дисперсию и ковариацию:
+    \[ \Var(X+Y) = \Var(X) + \Var(Y) + 2 \cdot \Cov(X,Y) = 4 + 9 + 2 \cdot (-3) = 7 \]
+    \[\Cov(X+Y,Y) = \Cov(X,Y) + \Cov(Y,Y) = -3 + 9 = 6\]
+    
+    
+    Тогда по формуле корреляции:
+    \[ \Corr(X+Y,Y) = \frac{\Cov(X+Y,Y)}{\sqrt{\Var(X+Y)\cdot \Var(Y)}} = \frac{6}{\sqrt{63}} = \frac{6}{3\sqrt{7}} = \frac{2}{\sqrt{7}} \]
+
+    Ответ: C
+
+    \item
+    
+    Функция плотности нормально распределенной случайной величины:
+    
+    \[ f(x)=\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}} \]
+    
+    Известно, что для стандартного нормального распределения $\mu=0$, а $\sigma^2=1$. Тогда его функция плотности:
+    
+    \[ f(x)=\frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \]
+    
+    Для вычисления искомой вероятности нужно проинтегрировать полученное выражение на промежутке [-1; 2]
+    
+    Ответ: B
+
+    \item
+
+    Координаты вершин соответсвующего треугольника: $(0;0), (2;0), (0;4)$
+    Тогда его площадь $S_\triangle$ = 4
+   
+    Для равномерного распределения:
+    
+    \[f_{X,Y}(1,1) = \frac{1}{S_\triangle} = \frac{1}{4}\]
+
+    Ответ: A
+
+    \item
+    
+    По определению события A, B и C независимы в совокупности, если:
+    
+    \[ \P(A \cap B) = \P(A)\P(B) \]
+    \[ \P(A \cap C) = \P(A)\P(C) \]
+    \[ \P(B \cap C) = \P(B)\P(C) \]
+    \[ \P(ABC) = \P(A)\P(B)\P(C) \]
+
+    Ответ: B, D
+
+    \item
+    
+    Для определения искомой вероятности вычислим интеграл:
+    
+    \[\P({\xi\in[3; 6]}) = \int_3^4 \frac{1}{4} dx = \left.\frac{x}{4}\right|_3^4  = 1 - \frac{3}{4} = \frac{1}{4}\]
+
+    Ответ: B
+
+    \item
+
+    Заметим, что для каждого значения с.в. $Y$ существует только одно значение с.в. $X$, удовлетворяющее заданному условию: 
+    
+    \[Y = -1; X = 1\]
+    \[Y = 0; X = 2\]
+    \[Y = 1; X = 1\]
+    
+    Тогда искомая вероятность равна сумме вероятностей этих событий.
+    Вследствие независимости данных сулчайных величин получаем:
+
+    \[\P(X + Y^2 = 2) = (\frac{1}{11} \cdot\frac{1}{3}) \cdot 3 = \frac{1}{11}\]
+
+    Ответ: C
+
+    \item
+    
+    Длина окружности с единичным радиусом равна $2\pi$. 
+    Тогда всего Вася может попасть в один из шести секторов 
+    
+    По классическому определению вероятности:
+
+    \[\P(\text{<<Красный>>}) = \frac{1}{6}\]
+
+    Ответ: E
+
+    \item
+    
+    По теореме сложения:
+
+    \[\P(A\cup B) = \P(A) + \P(B) - \P(A\cap B)\]
+    \[\P(B) = \P(A\cup B) + \P(A\cap B)\ - \P(A) = 0.6 + 0.2 - 0.3 = 0.5\]
+
+    Ответ: B
+
+    \item
+    
+    По свойствам дисперсии:
+
+    \[\Var(2X - Y + 1) = 4\cdot \Var(X) + \Var(Y) - 4 \cdot \Cov(X,Y) \]
+    \[\Var(2X - Y + 1) = 4 \cdot 4 + 9 - 4 \cdot (-3) = 37\]
+
+    Ответ: B
+
+    \item
+    
+    По закону больших чисел данный предел равен $\E(X^2)$
+    В свою очередь для стандартного нормального распределения:
+
+    \[\E(X^2) = \Var(X) +(\E(X))^2 = 1 + 0 = 1\]
+
+    Ответ: B
+
+    \item
+
+    Из определения условной функции плотности с.в. X при Y = 1/2:
+
+    \[f\left(x\mid y=\frac{1}{2}\right) = \frac{f\left(x,\frac{1}{2}\right)}{f_{y}\left(\frac{1}{4}\right)} = \frac{6x \cdot 0.25}{0.75} = 2x\]
+
+    \[f_{y}(y) = \int_0^1 6\cdot x\cdot y^2 dx = \left.3 \cdot y^2 \cdot x^2\right|_0^1  = 3\cdot y^2,  y \in [0;1]\]
+
+    Ответ: C
+
+    \item
+
+    Из искомой вероятности устанавливаем, что $n$ = 100
+    Тогда:
+
+    \[\Bar X \sim \N\left(4,1\right)\]
+    
+    Стандартизируем случайную величину и, пользуясь таблицей, получаем ответ:
+
+    \[\P\left(\frac{\Bar X - 4}{\sqrt{1}} \leq \frac{5-4}{1}\right) = \P(\Z\leq 1) = 0.84$$
+    
+    Ответ: C
+
+    \item
+    
+    По свойствам ковариации:
+
+    \[\Cov(X+2Y, 2X + 3) = \Cov(X, 2X) + \Cov(2Y, 2X) = 2\Var(X) + 4 \cdot \Cov(X,Y)\] 
+    \[\Cov(X+2Y, 2X + 3) = 2 \cdot 4 + 4 \cdot (-3) = 8 - 12 = -4\]
+
+    Ответ: A
+
+    \item
+    
+    По свойствам математического ожидания:
+
+    \[\E((X-1)Y) = \E(XY) - \E(Y) = \E(X)\cdot\E(Y) + \Cov(X,Y) - \E(Y)\] 
+    \[\E((X-1)Y) = - 2 - 3 - 2 = -7\]
+
+    Ответ: B
+
+    \item
+    
+    Случайная величина $X_{i}$ имеет распределение Бернулли. 
+    
+    Причем $\P(X_{i} = 1) = \frac{1}{6}$
+    
+    Тогда:
+
+    \[\P(X_{1} + X_{2} = 1) = \P(X_{1} = 0; X_{2} = 1) + \P(X_{1} = 1; X_{2} = 0) \]
+    \[\P(X_{1} + X_{2} = 1) = \frac{5}{6} \cdot \frac{1}{6} + \frac{1}{6} \cdot \frac{5}{6} = \frac{5}{18}\]
+    
+    \[\P(X_{1} = 0\mid X_{1} + X_{2} = 1) = \frac{\P(X_{1} = 0\cap X_{1} + X_{2} = 1)}{X_{1} + X_{2} = 1}) = \frac{1}{2}\]
+
+    Тогда найденный условный закон распределения случайной величины $X_{1}$ совпадает с распределением Бернулли с параметром $p = \frac{1}{2}$
+    
+    Ответ: B
+
+    \item
+
+    Стандартизируя случайную величину $X$ + $Y$ получаем:
+
+    \[\P(X + Y < 3) = \P\left(\frac{X+Y-3}{\sqrt{7}} < \frac{3-3}{\sqrt{7}}\right) = (\Z\leq 0) = 0.5\]
+
+    Ответ: C
+
+    \item
+
+    Существуют 3 доступные функции кнопок:
+
+    Честные кубики (\P(x_i = 6) =\frac{1}{2}$) 
+
+    Увеличенная вероятность шестерки (\P(x_i = 6) =\frac{1}{2}$) 
+
+    Увеличенная вероятность единицы (\P(x_i = 6) =\frac{1}{10}$) 
+    
+    Тогда:
+
+    \[\P(\text{<<Честный кубик>>}\mid \text{<<6>>}) = \frac{\P(i=1,2,3\cap \text{<<6>>})}{\P(\text{<<6>>})} = \frac{\frac{3}{30}}{\frac{11}{50}} = \frac{5}{11} \]
+
+    Ответ: C
+
+    \item
+
+    Из всех данных матриц только матрица ""С"" обладает свойствами симметричности и неотрицательности определителя
+
+    Ответ: C
+
+    \item
+    
+    По свойствам математического ожидания:
+
+    \[\E(\alpha X + (1 - \alpha)Y) = \alpha \E(X) + (1-\alpha) \E(Y) = \alpha \cdot (-1) + (1-\alpha)\cdot2 = 0\]
+    \[\alpha = \frac{2}{3}\]
+
+    Ответ: A
+
+    \item
+    
+    Для биноминального распределения:
+
+    \[\P(\xi = 0) = (1-p)^n = (\frac{1}{4})^2 = \frac{1}{16}\]
+
+    Ответ: B
+
+    \item
+    
+    Для распределение Пуассона с параметром $\lambda = 4$:
+    
+    \[\P(x=k) = \lambda^k\cdot\frac{e^{-\lambda}}{k!}\]
+    \[\P(X\geq1) = 1 - \P(k=0) = 1 - e^{-4}\]
+    
+    Обратите внимание, что приведенная формула работает только для маленьких вероятностей
+    
+    Ответ: C
+
+    \item
+    
+    Для распределения Бернулли с параметром p:
+
+    \[\E(\xi^2) = \Var(\xi) + (\E(\xi))^2 = p\cdot (1-p) + p^2 = p\]
+
+    Ответ: B
+
+    \item
+    
+    Для экспоненциального распределения:
+
+    \[\E(\xi) = \frac{1}{\lambda}\]
+    \[\Var(\xi) = \frac{1}{\lambda^2}\]
+
+    \[\E(\xi^2) = \Var(\xi) + (\E(\xi))^2 = \frac{1}{\lambda^2} + \frac{1}{\lambda^2} = \frac{2}{\lambda^2}\]
+
+    Ответ: A
+
+    \item
+
+    При всех стараниях Васе никак не удастся попасть дротиком одновременно и в красный, и в синий сектор, поэтому события А и В несовместны
+    
+    Ответ: E
+
+    \item
+    
+    Для нахождения искомого м.о. вычислим соответствующий интеграл:
+    
+    \[\E(XY) = 6 \cdot \int_0^1 dx\int_0^1 x\cdot y \cdot x \cdot y^2 dy = \left.\int_0^1 2\cdot x^3 \cdot y^3 \right|_0^1 dy = \left.\frac{2\cdot y^4}{4}\right|_0^1 = \frac{1}{2}\]
+
+    Ответ: A
+
+    \item
+    
+    По свойствам дисперсии:
+    \[\Var(\alpha X + (1-\alpha) Y) = \alpha^2 \Var(X) + (1-\alpha)^2 \Var(Y) + 2\cdot \Cov(X,Y)\cdot\alpha\cdot(1-\alpha)\]
+    \[\Var(\alpha X + (1-\alpha) Y) = 4\cdot\alpha^2 + 9\cdot(1-\alpha)^2 - 6\cdot\alpha\cdot(1-\alpha) = 19\cdot\alpha^2 - 24\cdot\alpha + 9\]
+
+    Тогда точка минимума параболы, ветви которой направленны вверх:
+    \[\alpha = \frac{24}{2 \cdot 19} =\frac{12}{19}\]
+
+    Ответ: 12/19
+
+    \item
+    
+    Для ответа на вопрос вычислим ряд условных вероятностей:
+
+    \[\P(\text{<<без багажа>>}) = \frac{1}{4}\]
+    \[\P(\text{<<с рюкзаком>>}\mid\text{<<без багажа>>}) = \frac{1}{2}\]
+    \[\P(\text{<<с рюкзаком>>}\mid\text{<<c багажом>>}) = \frac{55}{150}\]
+    
+    Тогда \P(\text{<<без рюкзака>>}):
+    
+    \[\P(\text{<<без рюкзака>>}) = \frac{1}{2}\cdot\frac{1}{4} + \frac{95}{150} \cdot\frac{3}{4} = 0.6\]
+
+   
+
+    Ответ: A
+
+    \item
+    
+    Cогласно неравенству Маркова:
+   
+    \[\P(|X-2| \geq 10) \leq \frac{\Var(X)}{100}\]
+    
+    Тогда искомая вероятность:
+
+    \[\P(|X-2| \leq 10) \geq 1 - \frac{\Var(X)}{100} = 0.94\]
+
+    Ответ: C
+
+\end{enumerate}
+
+\end{document}
